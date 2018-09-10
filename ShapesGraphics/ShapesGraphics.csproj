@@ -62,12 +62,26 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Exceptions\ConstructionArgsCastException.cs" />
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Models\Common\Point.cs" />
+    <Compile Include="Models\ConstructionArgs\CircleConstructionArgs.cs" />
+    <Compile Include="Models\ConstructionArgs\BaseConstructionArgs.cs" />
+    <Compile Include="Models\ConstructionArgs\RectangleConstructionArgs.cs" />
+    <Compile Include="Models\ConstructionArgs\TrapeziumConstructionArgs.cs" />
+    <Compile Include="Models\Shapes\Circle.cs" />
+    <Compile Include="Models\Shapes\Rectangle.cs" />
+    <Compile Include="Models\Shapes\Shape.cs" />
+    <Compile Include="Models\Shapes\Trapezium.cs" />
+    <Compile Include="Models\Validators\CircleValidator.cs" />
+    <Compile Include="Models\Validators\IValidator.cs" />
+    <Compile Include="Models\Validators\RectangleValidator.cs" />
+    <Compile Include="Models\Validators\TrapeziumValidator.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -93,5 +107,6 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
