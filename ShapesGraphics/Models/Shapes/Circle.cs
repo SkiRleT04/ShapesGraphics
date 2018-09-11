@@ -4,7 +4,7 @@ using System;
 
 namespace ShapesGraphics.Models.Shapes
 {
-    class Circle : Shape
+    public class Circle : Shape
     {
         public Circle(BaseConstructionArgs baseConstructionArgs) : base(baseConstructionArgs)
         {

@@ -1,4 +1,8 @@
-﻿using System.Windows;
+﻿using ShapesGraphics.Models.ConstructionArgs;
+using ShapesGraphics.Models.Shapes;
+using ShapesGraphics.ViewModels;
+using ShapesGraphics.Views;
+using System.Windows;
 
 namespace ShapesGraphics
 {
@@ -10,6 +14,10 @@ namespace ShapesGraphics
         public MainWindow()
         {
             InitializeComponent();
+            CreateCircleViewModel viewModel = new CreateCircleViewModel();
+            CreateCircleWindow page = new CreateCircleWindow(viewModel);
+            page.ShowDialog();
+            var filledViewModel = page.DataContext;
         }
     }
 }

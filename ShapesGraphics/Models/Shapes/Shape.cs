@@ -3,7 +3,7 @@ using ShapesGraphics.Models.ConstructionArgs;
 
 namespace ShapesGraphics.Models.Shapes
 {
-    abstract class Shape
+    public abstract class Shape
     {
         protected Shape(BaseConstructionArgs baseConstructionArgs)
         {
@@ -11,8 +11,24 @@ namespace ShapesGraphics.Models.Shapes
             Name = baseConstructionArgs.Name;
         }
 
-        protected Point CenterOfMass { get; set; }
-        protected string Name { get; set; }
+        private Point _centerOfMass;
+        public Point CenterOfMass
+        {
+            get
+            {
+                if(_centerOfMass == null)
+                {
+                    _centerOfMass = new Point();
+                }
+                return _centerOfMass;
+            }
+            set
+            {
+                _centerOfMass = value;
+            }
+        }
+
+        public string Name { get; set; }
 
         public abstract double GetArea();
         public abstract double GetPerimeter();
