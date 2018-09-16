@@ -1,12 +1,14 @@
 ﻿using ShapesGraphics.Exceptions;
 using ShapesGraphics.Models.ConstructionArgs;
+using ShapesGraphics.Models.Validators;
 using System;
 
 namespace ShapesGraphics.Models.Shapes
 {
     public class Circle : Shape
     {
-        public Circle(BaseConstructionArgs baseConstructionArgs) : base(baseConstructionArgs)
+
+        public Circle(BaseConstructionArgs baseConstructionArgs, IValidator validator) : base(baseConstructionArgs, validator)
         {
             if (baseConstructionArgs is CircleConstructionArgs circleConstructionArgs)
             {

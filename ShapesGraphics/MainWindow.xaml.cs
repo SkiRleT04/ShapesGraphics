@@ -6,18 +6,19 @@ using System.Windows;
 
 namespace ShapesGraphics
 {
-    /// <summary>
-    /// Логика взаимодействия для MainWindow.xaml
-    /// </summary>
     public partial class MainWindow : Window
     {
         public MainWindow()
         {
             InitializeComponent();
-            CreateCircleViewModel viewModel = new CreateCircleViewModel();
-            CreateCircleWindow page = new CreateCircleWindow(viewModel);
-            page.ShowDialog();
-            var filledViewModel = page.DataContext;
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            var viewModel = new CreateCircleViewModel();
+            CreateCircleWindow window = new CreateCircleWindow(viewModel);
+            window.ShowDialog();
+            var shape = (window.DataContext as BaseViewModel).Shape;
         }
     }
 }

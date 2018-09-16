@@ -7,8 +7,8 @@ using System.Threading.Tasks;
 
 namespace ShapesGraphics.Models.Validators
 {
-    interface IValidator
+    public interface IValidator
     {
-        bool IsValid(BaseConstructionArgs baseContructionArgs);
+        void Validate(BaseConstructionArgs baseContructionArgs);
     }
 }

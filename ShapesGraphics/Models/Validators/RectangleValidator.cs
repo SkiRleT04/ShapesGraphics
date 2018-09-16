@@ -10,22 +10,23 @@ namespace ShapesGraphics.Models.Validators
 {
     class RectangleValidator : IValidator
     {
-        public bool IsValid(BaseConstructionArgs baseConstructionArgs)
+        public void Validate(BaseConstructionArgs baseConstructionArgs)
         {
             if (baseConstructionArgs is RectangleConstructionArgs rectangleConstructionArgs)
             {
-                if (rectangleConstructionArgs.Width <= 0 || 
-                    rectangleConstructionArgs.Height <= 0)
+                if (rectangleConstructionArgs.Width <= 0)
                 {
-                    return false;
+                    throw new ValidationException("Width of rectangle should be greater than zero.");
                 }
+                if (rectangleConstructionArgs.Height <= 0)
+                {
+                    throw new ValidationException("Height of rectangle should be greater than zero.");
+                }  
             }
             else
             {
                 throw new ConstructionArgsCastException("Cannot cast Base Construction Args to Rectangle Construction Args.");
             }
-
-            return true;
         }
     }
 }

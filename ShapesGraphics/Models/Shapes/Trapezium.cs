@@ -1,12 +1,13 @@
 ﻿using ShapesGraphics.Exceptions;
 using ShapesGraphics.Models.ConstructionArgs;
+using ShapesGraphics.Models.Validators;
 using System;
 
 namespace ShapesGraphics.Models.Shapes
 {
     class Trapezium : Shape
     {
-        public Trapezium(BaseConstructionArgs baseConstructionArgs) : base(baseConstructionArgs)
+        public Trapezium(BaseConstructionArgs baseConstructionArgs, IValidator validator) : base(baseConstructionArgs, validator)
         {
             if (baseConstructionArgs is TrapeziumConstructionArgs trapeziumConstructionArgs)
             {

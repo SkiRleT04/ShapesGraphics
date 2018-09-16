@@ -1,29 +1,61 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Linq;
-using System.Runtime.CompilerServices;
-using System.Text;
-using System.Threading.Tasks;
+﻿using ShapesGraphics.Exceptions;
+using ShapesGraphics.Models.Common;
+using ShapesGraphics.Models.ConstructionArgs;
+using ShapesGraphics.Models.Shapes;
+using System;
+using System.Windows;
 
 namespace ShapesGraphics.ViewModels
 {
-    public abstract class BaseViewModel : INotifyPropertyChanged
+    public abstract class BaseViewModel : BindableObject
     {
-        public event PropertyChangedEventHandler PropertyChanged;
-
-        protected virtual void OnPropertyChanged([CallerMemberName] string propertyName = null)
+        private BaseConstructionArgs _constructionArgs;
+        public BaseConstructionArgs ConstructionArgs
         {
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+            get
+            {
+                return _constructionArgs;
+            }
+            set
+            {
+                SetProperty(ref _constructionArgs, value);
+            }
         }
 
-        protected virtual bool SetProperty<T>(ref T storage, T value, [CallerMemberName] string propertyName = "")
+        public abstract Shape Shape { get; set; }
+        public abstract Action Save { get; }
+
+        public Command CloseCommand
         {
-            if (EqualityComparer<T>.Default.Equals(storage, value))
+            get
+            {
+                return new Command(Close);
+            }
+        }
+
+        public Action<object> Close { get; set; }
+
+        public bool Closing(object isDialogPromtUnrequired)
+        {
+            try
+            {
+                if (!(bool)isDialogPromtUnrequired)
+                {
+                    MessageBoxResult result = MessageBox.Show("Do you want to save changes?", "Warning", MessageBoxButton.YesNo, MessageBoxImage.Warning);
+                    if (result == MessageBoxResult.Yes)
+                    {
+                        Save?.Invoke();
+                    }
+                    return true;
+                }
+                Save?.Invoke();
+                return true;
+            }
+            catch (ValidationException ex)
+            {
+                MessageBox.Show(ex.Message);
                 return false;
-            storage = value;
-            this.OnPropertyChanged(propertyName);
-            return true;
+            }
         }
     }
 }

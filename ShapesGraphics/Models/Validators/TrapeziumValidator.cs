@@ -10,22 +10,30 @@ namespace ShapesGraphics.Models.Validators
 {
     class TrapeziumValidator : IValidator
     {
-        public bool IsValid(BaseConstructionArgs baseConstructionArgs)
+        public void Validate(BaseConstructionArgs baseConstructionArgs)
         {
             if (baseConstructionArgs is TrapeziumConstructionArgs trapeziumConstructionArgs)
             {
-                if (trapeziumConstructionArgs.Height <= 0 || 
-                    trapeziumConstructionArgs.LongBase <= 0 || 
-                    trapeziumConstructionArgs.ShortBase <= 0)
+                if (trapeziumConstructionArgs.Height <= 0)
                 {
-                    return false;
+                    throw new ValidationException("Height of trapezium should be greater than zero.");
+
+                }
+                if (trapeziumConstructionArgs.LongBase <= 0)
+                {
+                    throw new ValidationException("LongBase of trapezium should be greater than zero.");
+
+                }
+                if (trapeziumConstructionArgs.ShortBase <= 0)
+                {
+                    throw new ValidationException("ShortBase of trapezium should be greater than zero.");
+
                 }
             }
             else
             {
                 throw new ConstructionArgsCastException("Cannot cast Base Construction Args to Trapezium Construction Args.");
             }
-            return true;
         }
     }
 }

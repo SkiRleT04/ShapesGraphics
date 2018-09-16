@@ -10,21 +10,19 @@ namespace ShapesGraphics.Models.Validators
 {
     class CircleValidator : IValidator
     {
-        public bool IsValid(BaseConstructionArgs baseConstructionArgs)
+        public void Validate(BaseConstructionArgs baseConstructionArgs)
         {
             if (baseConstructionArgs is CircleConstructionArgs circleConstructionArgs)
             {
                 if (circleConstructionArgs.Radius <= 0)
                 {
-                    return false;
+                    throw new ValidationException("Radius of circle should be greater than zero.");
                 }
             }
             else
             {
                 throw new ConstructionArgsCastException("Cannot cast Base Construction Args to Circle Construction Args.");
             }
-
-            return true;
         }
     }
 }

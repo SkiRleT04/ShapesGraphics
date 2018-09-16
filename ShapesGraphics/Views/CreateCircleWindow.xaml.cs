@@ -1,6 +1,9 @@
-﻿using ShapesGraphics.ViewModels;
+﻿using ShapesGraphics.Exceptions;
+using ShapesGraphics.ViewModels;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -18,22 +21,18 @@ namespace ShapesGraphics.Views
     /// <summary>
     /// Логика взаимодействия для CreateCircleWindow.xaml
     /// </summary>
-    public partial class CreateCircleWindow : Window
+    public partial class CreateCircleWindow : BaseWindow
     {
-        public CreateCircleWindow()
-        {
-            Initialize();
-        }
-
-        public CreateCircleWindow(CreateCircleViewModel viewModel)
-        {
-            Initialize();
-            DataContext = viewModel;
-        }
-
-        private void Initialize()
+        public CreateCircleWindow(CreateCircleViewModel viewModel) : base(viewModel)
         {
             InitializeComponent();
+            _viewModel = viewModel;
+            DataContext = _viewModel;
         }
+
+        //protected override void OnClosing(CancelEventArgs e)
+        //{
+        //    base.OnClosing(e);
+        //}
     }
 }

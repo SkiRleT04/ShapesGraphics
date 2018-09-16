@@ -1,14 +1,21 @@
-﻿using ShapesGraphics.Models.Common;
+﻿using ShapesGraphics.Exceptions;
+using ShapesGraphics.Models.Common;
 using ShapesGraphics.Models.ConstructionArgs;
+using ShapesGraphics.Models.Validators;
+
 
 namespace ShapesGraphics.Models.Shapes
 {
     public abstract class Shape
     {
-        protected Shape(BaseConstructionArgs baseConstructionArgs)
+        protected Shape(BaseConstructionArgs baseConstructionArgs, IValidator validator)
         {
             CenterOfMass = baseConstructionArgs.CenterOfMass;
             Name = baseConstructionArgs.Name;
+
+          
+                validator.Validate(baseConstructionArgs);
+           
         }
 
         private Point _centerOfMass;
@@ -16,7 +23,7 @@ namespace ShapesGraphics.Models.Shapes
         {
             get
             {
-                if(_centerOfMass == null)
+                if (_centerOfMass == null)
                 {
                     _centerOfMass = new Point();
                 }

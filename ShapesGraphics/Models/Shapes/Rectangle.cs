@@ -1,13 +1,14 @@
 ﻿using ShapesGraphics.Exceptions;
 using ShapesGraphics.Models.ConstructionArgs;
+using ShapesGraphics.Models.Validators;
 
 namespace ShapesGraphics.Models.Shapes
 {
     class Rectangle : Shape
     {
-        public Rectangle(BaseConstructionArgs baseConstructionArgs) : base(baseConstructionArgs)
+        public Rectangle(BaseConstructionArgs constructionArgs, IValidator validator) : base(constructionArgs, validator)
         {
-            if (baseConstructionArgs is RectangleConstructionArgs rectangleConstructionArgs)
+            if (constructionArgs is RectangleConstructionArgs rectangleConstructionArgs)
             {
                 Width = rectangleConstructionArgs.Width;
                 Height = rectangleConstructionArgs.Height;

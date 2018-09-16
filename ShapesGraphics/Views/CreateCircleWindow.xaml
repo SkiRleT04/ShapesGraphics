@@ -1,28 +1,30 @@
-﻿<Window x:Class="ShapesGraphics.Views.CreateCircleWindow"
+﻿<local:BaseWindow x:Class="ShapesGraphics.Views.CreateCircleWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ShapesGraphics.Views"
-        mc:Ignorable="d"
-        Title="Create new circle" Height="200" Width="300">
+                  xmlns:s="clr-namespace:System;assembly=mscorlib"
+                  mc:Ignorable="d"
+        Title="Create new circle" Height="300" Width="300" ResizeMode="NoResize" WindowStartupLocation="CenterScreen" WindowStyle="ThreeDBorderWindow">
     <Grid Margin="10">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="1*"/>
+        </Grid.RowDefinitions>
+
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="1*"/>
             <ColumnDefinition Width="2*"/>
         </Grid.ColumnDefinitions>
 
-        <Grid.RowDefinitions>
-            <RowDefinition Height="1*"/>
-            <RowDefinition Height="1*"/>
-            <RowDefinition Height="1*"/>
-        </Grid.RowDefinitions>
-        
         <Label Content="Name: " Grid.Row="0" Grid.Column="0"/>
         <Label Content="Center of mass: " Grid.Row="1" Grid.Column="0"/>
         <Label Content="Radius: " Grid.Row="2" Grid.Column="0"/>
 
-        <TextBox Text="{Binding Name}" Grid.Row="0" Grid.Column="1"/>
+        <TextBox Text="{Binding CircleConstructionArgs.Name}" Grid.Row="0" Grid.Column="1"/>
         <Grid Grid.Row="1" Grid.Column="1">
             <Grid.RowDefinitions>
                 <RowDefinition Height="1*"/>
@@ -37,9 +39,18 @@
             <Label Content="X: " Grid.Row="0" Grid.Column="0"/>
             <Label Content="Y: " Grid.Row="1" Grid.Column="0"/>
 
-            <TextBox Text="{Binding CenterOfMass.X}" Grid.Row="0" Grid.Column="1"/>
-            <TextBox Text="{Binding CenterOfMass.Y}" Grid.Row="1" Grid.Column="1"/>
+            <TextBox Text="{Binding CircleConstructionArgs.CenterOfMass.X}" Grid.Row="0" Grid.Column="1"/>
+            <TextBox Text="{Binding CircleConstructionArgs.CenterOfMass.Y}" Grid.Row="1" Grid.Column="1"/>
         </Grid>
-        <TextBox Text="{Binding Radius}" Grid.Row="2" Grid.Column="1"/>
+        <TextBox Text="{Binding CircleConstructionArgs.Radius}" Grid.Row="2" Grid.Column="1"/>
+
+        <StackPanel Grid.Row="3" Grid.ColumnSpan="2" Orientation="Horizontal" HorizontalAlignment="Stretch">
+            <Button Content="Save" HorizontalAlignment="Left" Command="{Binding CloseCommand}">
+                <Button.CommandParameter>
+                    <s:Boolean>False</s:Boolean>
+                </Button.CommandParameter>
+            </Button>
+            <Button Content="Cancel" HorizontalAlignment="Right" Command="{Binding CloseCommand}"/>
+        </StackPanel>
     </Grid>
-</Window>
+</local:BaseWindow>
