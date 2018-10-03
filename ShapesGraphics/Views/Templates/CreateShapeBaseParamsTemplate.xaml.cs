@@ -1,5 +1,4 @@
-﻿using ShapesGraphics.ViewModels;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -11,20 +10,19 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
+using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace ShapesGraphics.Views
+namespace ShapesGraphics.Views.Templates
 {
     /// <summary>
-    /// Логика взаимодействия для CreateTrapeziumWindow.xaml
+    /// Логика взаимодействия для CreateShapeBaseParams.xaml
     /// </summary>
-    public partial class CreateTrapeziumWindow : BaseWindow
+    public partial class CreateShapeBaseParamsTemplate : UserControl
     {
-        public CreateTrapeziumWindow(CreateTrapeziumViewModel viewModel) : base(viewModel)
+        public CreateShapeBaseParamsTemplate()
         {
             InitializeComponent();
-            _viewModel = viewModel;
-            DataContext = _viewModel;
         }
     }
 }

@@ -1,9 +1,7 @@
-﻿using ShapesGraphics.Exceptions;
-using ShapesGraphics.ViewModels;
+﻿using ShapesGraphics.ViewModels;
 using System;
 using System.ComponentModel;
 using System.Windows;
-using System.Windows.Controls;
 
 namespace ShapesGraphics.Views
 {

@@ -1,0 +1,32 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1" MembersFormat="FullSignature">
+  <Class Name="ShapesGraphics.Models.Shapes.Shape">
+    <Position X="0.5" Y="0.5" Width="7" />
+    <TypeIdentifier>
+      <HashCode>AAAAEAAAAAAAEAAEAAAAAAQAAAAAAAEAAAAAEAAAAAA=</HashCode>
+      <FileName>Models\Shapes\Shape.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ShapesGraphics.Models.Shapes.Circle">
+    <Position X="0.5" Y="4" Width="2.5" />
+    <TypeIdentifier>
+      <HashCode>AAAIAAAAAAAAAAAEAAAAAAAAAAAAAAEAAAAAEAAAAAA=</HashCode>
+      <FileName>Models\Shapes\Circle.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ShapesGraphics.Models.Shapes.Rectangle">
+    <Position X="7.5" Y="4.25" Width="2.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAABAAAAAAEAAAAAEAAAAAAAAEAAAAAEAAAAAA=</HashCode>
+      <FileName>Models\Shapes\Rectangle.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ShapesGraphics.Models.Shapes.Trapezium">
+    <Position X="3.75" Y="4.25" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAABAAAAIAEAAAAAAAAAAAAAAEAAAAAEAQAAAA=</HashCode>
+      <FileName>Models\Shapes\Trapezium.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

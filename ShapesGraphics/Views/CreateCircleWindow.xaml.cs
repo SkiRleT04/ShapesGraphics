@@ -29,10 +29,5 @@ namespace ShapesGraphics.Views
             _viewModel = viewModel;
             DataContext = _viewModel;
         }
-
-        //protected override void OnClosing(CancelEventArgs e)
-        //{
-        //    base.OnClosing(e);
-        //}
     }
 }

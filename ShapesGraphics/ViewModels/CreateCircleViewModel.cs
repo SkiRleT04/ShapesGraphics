@@ -4,7 +4,6 @@ using ShapesGraphics.Models.ConstructionArgs;
 using ShapesGraphics.Models.Shapes;
 using ShapesGraphics.Models.Validators;
 using System;
-using System.Windows;
 
 namespace ShapesGraphics.ViewModels
 {
@@ -15,11 +14,12 @@ namespace ShapesGraphics.ViewModels
         {
             CircleConstructionArgs = new CircleConstructionArgs()
             {
-                CenterOfMass = new Models.Common.Point(),
+                CenterOfMass = new Point(),
                 Name = string.Empty,
                 Radius = default
             };
 
+            ConstructionArgs = CircleConstructionArgs;
         }
         #endregion
 

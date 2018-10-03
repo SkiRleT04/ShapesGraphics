@@ -1,6 +1,6 @@
 ﻿namespace ShapesGraphics.Models.ConstructionArgs
 {
-    class TrapeziumConstructionArgs : BaseConstructionArgs
+    public class TrapeziumConstructionArgs : BaseConstructionArgs
     {
         public int LongBase { get; set; }
         public int ShortBase { get; set; }

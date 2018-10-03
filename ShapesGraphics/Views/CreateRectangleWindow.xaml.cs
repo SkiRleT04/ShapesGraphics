@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ShapesGraphics.ViewModels;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -17,11 +18,13 @@ namespace ShapesGraphics.Views
     /// <summary>
     /// Логика взаимодействия для CreateRectangleWindow.xaml
     /// </summary>
-    public partial class CreateRectangleWindow : Window
+    public partial class CreateRectangleWindow : BaseWindow
     {
-        public CreateRectangleWindow()
+        public CreateRectangleWindow(CreateRectangleViewModel viewModel) : base(viewModel)
         {
             InitializeComponent();
+            _viewModel = viewModel;
+            DataContext = _viewModel;
         }
     }
 }

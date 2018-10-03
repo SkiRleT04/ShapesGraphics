@@ -5,39 +5,38 @@ namespace ShapesGraphics.Models.Common
 {
     public class Command : ICommand
     {
-        private Predicate<object> _canExecute;
-        private Action<object> _execute;
+        private readonly Action _execute;
+        private readonly Action<object> _executeWithParam;
+        private readonly Func<bool> _canExecute;
 
-        public Command(Predicate<object> canExecute, Action<object> execute)
+        public Command(Action execute, Func<bool> canExecute = null)
         {
+            _execute = execute;
             _canExecute = canExecute;
-            _execute = execute;
         }
 
-        public Command(Action<object> execute)
+        public Command(Action<object> executeWithParam, Func<bool> canExecute = null)
         {
-            _execute = execute;
-        }
-
-    
-        public event EventHandler CanExecuteChanged
-        {
-            add { CommandManager.RequerySuggested += value; }
-            remove { CommandManager.RequerySuggested -= value; }
+            _executeWithParam = executeWithParam;
+            _canExecute = canExecute;
         }
 
         public bool CanExecute(object parameter)
         {
-            if (_canExecute == null)
-            {
-                return true;
-            }
-            return _canExecute(parameter);
+            return _canExecute == null || _canExecute();
         }
 
-        public void Execute(object parameter = default)
+        public void Execute(object parameter)
         {
-            _execute?.Invoke(parameter);
+            _execute?.Invoke();
+            _executeWithParam?.Invoke(parameter);
+        }
+
+        public event EventHandler CanExecuteChanged;
+
+        public void RaiseCanExecuteChanged()
+        {
+            CanExecuteChanged?.Invoke(this, EventArgs.Empty);
         }
     }
 }
