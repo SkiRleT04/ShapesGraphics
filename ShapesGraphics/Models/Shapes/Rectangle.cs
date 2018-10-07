@@ -1,10 +1,11 @@
 ﻿using ShapesGraphics.Exceptions;
 using ShapesGraphics.Models.ConstructionArgs;
 using ShapesGraphics.Models.Validators;
+using System;
 
 namespace ShapesGraphics.Models.Shapes
 {
-    class Rectangle : Shape
+    public class Rectangle : Shape
     {
         public Rectangle(BaseConstructionArgs constructionArgs, IValidator validator) : base(constructionArgs, validator)
         {
@@ -34,9 +35,7 @@ namespace ShapesGraphics.Models.Shapes
 
         public override string ToString()
         {
-            return $@"{base.ToString()}\n
-                       Width: {Width}\n
-                       Height: {Height}\n";
+            return $"{base.ToString()}Width: {Width}{Environment.NewLine}Height: {Height}{Environment.NewLine}{GetShapeCharacteristics()}";
         }
     }
 }

@@ -5,7 +5,7 @@ using System;
 
 namespace ShapesGraphics.Models.Shapes
 {
-    class Trapezium : Shape
+    public class Trapezium : Shape
     {
         public Trapezium(BaseConstructionArgs baseConstructionArgs, IValidator validator) : base(baseConstructionArgs, validator)
         {
@@ -37,10 +37,7 @@ namespace ShapesGraphics.Models.Shapes
 
         public override string ToString()
         {
-            return $@"{base.ToString()}\n
-                       ShortBase: {ShortBase}\n
-                       LongBase: {LongBase}\n
-                       Height: {Height}\n";
+            return $"{base.ToString()}ShortBase: {ShortBase}{Environment.NewLine}LongBase: {LongBase}{Environment.NewLine}Height: {Height}{Environment.NewLine}{GetShapeCharacteristics()}";
         }
     }
 }

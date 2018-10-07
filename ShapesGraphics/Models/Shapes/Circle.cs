@@ -7,7 +7,6 @@ namespace ShapesGraphics.Models.Shapes
 {
     public class Circle : Shape
     {
-
         public Circle(BaseConstructionArgs baseConstructionArgs, IValidator validator) : base(baseConstructionArgs, validator)
         {
             if (baseConstructionArgs is CircleConstructionArgs circleConstructionArgs)
@@ -34,8 +33,7 @@ namespace ShapesGraphics.Models.Shapes
 
         public override string ToString()
         {
-            return $@"{base.ToString()}\n
-                       Radius: {Radius}\n";
+            return $"{base.ToString()}Radius: {Radius}{Environment.NewLine}{GetShapeCharacteristics()}";
         }
     }
 }

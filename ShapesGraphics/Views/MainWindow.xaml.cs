@@ -1,4 +1,6 @@
-﻿using ShapesGraphics.ViewModels;
+﻿using ShapesGraphics.Graphics;
+using ShapesGraphics.ViewModels;
+using System;
 using System.Windows;
 
 namespace ShapesGraphics.Views
@@ -9,6 +11,13 @@ namespace ShapesGraphics.Views
         {
             InitializeComponent();
             DataContext = new MainWindowViewModel();
+            DrawersPool drawersPool = new DrawersPool();
+            drawersPool.GetDrawer(typeof(CircleDrawer));
+        }
+
+        private void GlRender(object sender, EventArgs e)
+        {
+          
         }
     }
 }
