@@ -1,4 +1,7 @@
-﻿using System;
+﻿using DryIoc;
+using ShapesGraphics.Graphics;
+using ShapesGraphics.Models.Validators;
+using System;
 using System.Collections.Generic;
 using System.Configuration;
 using System.Data;
@@ -13,5 +16,14 @@ namespace ShapesGraphics
     /// </summary>
     public partial class App : Application
     {
+        public static Container Container { get; set; }
+        protected override void OnStartup(StartupEventArgs e)
+        {
+            Container = new Container();
+            Container.Register<CircleDrawer>(Reuse.Singleton);
+            Container.Register<CircleValidator>(Reuse.Singleton);
+
+            base.OnStartup(e);
+        }
     }
 }

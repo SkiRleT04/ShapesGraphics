@@ -9,6 +9,7 @@ namespace ShapesGraphics.Models.Shapes
     {
         public Circle(BaseConstructionArgs baseConstructionArgs, IValidator validator) : base(baseConstructionArgs, validator)
         {
+
             if (baseConstructionArgs is CircleConstructionArgs circleConstructionArgs)
             {
                 Radius = circleConstructionArgs.Radius;

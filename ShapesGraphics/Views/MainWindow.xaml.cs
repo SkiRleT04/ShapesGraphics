@@ -1,6 +1,11 @@
-﻿using ShapesGraphics.Graphics;
+﻿using DryIoc;
+using ShapesGraphics.Graphics;
+using ShapesGraphics.Helpers;
+using ShapesGraphics.Models.Validators;
 using ShapesGraphics.ViewModels;
 using System;
+using System.Collections.Generic;
+using System.Diagnostics;
 using System.Windows;
 
 namespace ShapesGraphics.Views

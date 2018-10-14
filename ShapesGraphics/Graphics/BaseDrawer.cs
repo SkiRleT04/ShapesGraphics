@@ -9,6 +9,7 @@ namespace ShapesGraphics.Graphics
 {
     public abstract class BaseDrawer<T> : IDrawer<T> where T : IShape
     {
+        
         public abstract void Draw(T shape);
 
         protected int GetСoefficient(List<float> listValues)

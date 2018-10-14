@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace ShapesGraphics.Graphics
 {
-    public interface IDrawer<T> where T:IShape
+    public interface IDrawer<in T> where T:IShape
     {
         void Draw(T shape);
     }

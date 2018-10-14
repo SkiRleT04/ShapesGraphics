@@ -36,6 +36,9 @@
     <LangVersion>latest</LangVersion>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="DryIoc, Version=3.0.2.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\DryIoc.dll.3.0.2\lib\net45\DryIoc.dll</HintPath>
+    </Reference>
     <Reference Include="OpenTK, Version=3.0.0.0, Culture=neutral, PublicKeyToken=bad199fe84eb3df4, processorArchitecture=MSIL">
       <HintPath>..\packages\OpenTK.3.0.0\lib\net20\OpenTK.dll</HintPath>
     </Reference>
@@ -71,6 +74,7 @@
     <Compile Include="Graphics\CircleDrawer.cs" />
     <Compile Include="Graphics\DrawersPool.cs" />
     <Compile Include="Graphics\IDrawer.cs" />
+    <Compile Include="Helpers\Singleton.cs" />
     <Compile Include="Models\Common\Command.cs" />
     <Compile Include="Models\Common\Point.cs" />
     <Compile Include="Models\Shapes\IShape.cs" />
@@ -173,7 +177,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Interfaces\" />
-    <Folder Include="Payloads\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
