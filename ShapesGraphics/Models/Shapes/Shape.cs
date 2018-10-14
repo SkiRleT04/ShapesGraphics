@@ -6,7 +6,7 @@ using System;
 
 namespace ShapesGraphics.Models.Shapes
 {
-    public abstract class Shape : IShape
+    public abstract class Shape
     {
         protected Shape(BaseConstructionArgs baseConstructionArgs, IValidator validator)
         {
@@ -33,8 +33,6 @@ namespace ShapesGraphics.Models.Shapes
         }
 
         public string Name { get; set; }
-
-
 
         public override string ToString()
         {

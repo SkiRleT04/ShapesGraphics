@@ -20,7 +20,11 @@ namespace ShapesGraphics
         protected override void OnStartup(StartupEventArgs e)
         {
             Container = new Container();
+
             Container.Register<CircleDrawer>(Reuse.Singleton);
+            Container.Register<RectangleDrawer>(Reuse.Singleton);
+            Container.Register<TrapeziumDrawer>(Reuse.Singleton);
+
             Container.Register<CircleValidator>(Reuse.Singleton);
 
             base.OnStartup(e);

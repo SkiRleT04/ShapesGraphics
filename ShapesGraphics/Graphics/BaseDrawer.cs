@@ -7,15 +7,15 @@ using System.Threading.Tasks;
 
 namespace ShapesGraphics.Graphics
 {
-    public abstract class BaseDrawer<T> : IDrawer<T> where T : IShape
+    public abstract class BaseDrawer<T>
     {
-        
         public abstract void Draw(T shape);
 
         protected int GetСoefficient(List<float> listValues)
         {
-            float maxValue = listValues.Select(Math.Abs).Max();
+            float maxValue = listValues.Select(Math.Abs).Max() * 1.1f;
             int coefficient = Convert.ToInt32(Math.Ceiling(maxValue));
+
             return coefficient;
         }
     }

@@ -1,28 +1,19 @@
-﻿using DryIoc;
-using ShapesGraphics.Graphics;
-using ShapesGraphics.Helpers;
-using ShapesGraphics.Models.Validators;
-using ShapesGraphics.ViewModels;
-using System;
-using System.Collections.Generic;
-using System.Diagnostics;
+﻿using ShapesGraphics.ViewModels;
 using System.Windows;
+using System.Windows.Input;
+using System.Windows.Media;
 
 namespace ShapesGraphics.Views
 {
     public partial class MainWindow : Window
     {
+        private MainWindowViewModel _viewModel;
         public MainWindow()
         {
             InitializeComponent();
-            DataContext = new MainWindowViewModel();
-            DrawersPool drawersPool = new DrawersPool();
-            drawersPool.GetDrawer(typeof(CircleDrawer));
+            _viewModel = new MainWindowViewModel(gl);
+            DataContext = _viewModel;
         }
-
-        private void GlRender(object sender, EventArgs e)
-        {
-          
-        }
+      
     }
 }

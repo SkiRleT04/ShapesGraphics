@@ -3,9 +3,9 @@ using ShapesGraphics.Models.Shapes;
 
 namespace ShapesGraphics.Graphics
 {
-    public class CircleDrawer : BaseDrawer<Circle>
+    public class TrapeziumDrawer : BaseDrawer<Trapezium>
     {
-        public override void Draw(Circle circle)
+        public override void Draw(Trapezium shape)
         {
             throw new NotImplementedException();
         }

@@ -73,12 +73,12 @@
     <Compile Include="Exceptions\ValidationException.cs" />
     <Compile Include="Graphics\BaseDrawer.cs" />
     <Compile Include="Graphics\CircleDrawer.cs" />
-    <Compile Include="Graphics\DrawersPool.cs" />
-    <Compile Include="Graphics\IDrawer.cs" />
+    <Compile Include="Graphics\DrawerHelper.cs" />
+    <Compile Include="Graphics\RectangleDrawer.cs" />
+    <Compile Include="Graphics\TrapeziumDrawer.cs" />
     <Compile Include="Helpers\Singleton.cs" />
     <Compile Include="Models\Common\Command.cs" />
     <Compile Include="Models\Common\Point.cs" />
-    <Compile Include="Models\Shapes\IShape.cs" />
     <Compile Include="ViewModels\BaseViewModel.cs" />
     <Compile Include="ViewModels\BindableObject.cs" />
     <Compile Include="ViewModels\CreateCircleViewModel.cs" />
@@ -176,8 +176,6 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Interfaces\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

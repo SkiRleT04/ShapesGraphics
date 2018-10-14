@@ -1,19 +1,23 @@
 ﻿using ShapesGraphics.Enums;
+using ShapesGraphics.Graphics;
 using ShapesGraphics.Models.Common;
-using ShapesGraphics.Models.ConstructionArgs;
 using ShapesGraphics.Models.Shapes;
-using ShapesGraphics.Models.Validators;
 using ShapesGraphics.Views;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
-using System.Windows;
+using WpfOpenGlControl;
 
 namespace ShapesGraphics.ViewModels
 {
     public class MainWindowViewModel : BindableObject
     {
+        public MainWindowViewModel(WpfOpenGLControl canvas)
+        {
+            _canvas = canvas;
+        }
+
         #region Commands
         private Command _createShapeCommand;
         public Command CreateShapeCommand
@@ -116,7 +120,9 @@ namespace ShapesGraphics.ViewModels
                 if (_selectedShape != null)
                 {
                     SelectedShapeProperties = _selectedShape.GetShapeCharacteristics();
-                }
+                    DrawerHelper.Draw(_selectedShape);
+                    _canvas.Invalidate();
+                }             
             }
         }
 
@@ -127,7 +133,7 @@ namespace ShapesGraphics.ViewModels
             {
                 if (_shapesList == null)
                 {
-                    _shapesList = new ObservableCollection<Models.Shapes.Shape>();
+                    _shapesList = new ObservableCollection<Shape>();
 
                     //var circle = new Circle(
                     //        new CircleConstructionArgs { CenterOfMass = new Point { X = 1, Y = 2 }, Name = "123", Radius = 3 }
@@ -177,5 +183,9 @@ namespace ShapesGraphics.ViewModels
             }
         }
         #endregion Properties
+
+        #region Variables
+        private WpfOpenGLControl _canvas;
+        #endregion
     }
 }
