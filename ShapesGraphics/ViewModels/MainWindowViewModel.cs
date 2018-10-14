@@ -113,6 +113,10 @@ namespace ShapesGraphics.ViewModels
                 SetProperty(ref _selectedShape, value);
                 EditShapeCommand.RaiseCanExecuteChanged();
                 DeleteShapeCommand.RaiseCanExecuteChanged();
+                if (_selectedShape != null)
+                {
+                    SelectedShapeProperties = _selectedShape.GetShapeCharacteristics();
+                }
             }
         }
 
@@ -157,6 +161,19 @@ namespace ShapesGraphics.ViewModels
             get
             {
                 return Enum.GetValues(typeof(ShapeType)).Cast<ShapeType>();
+            }
+        }
+
+        private string _selectedShapeProperties;
+        public string SelectedShapeProperties
+        {
+            get
+            {
+                return _selectedShapeProperties;
+            }
+            set
+            {
+                SetProperty(ref _selectedShapeProperties, value);
             }
         }
         #endregion Properties

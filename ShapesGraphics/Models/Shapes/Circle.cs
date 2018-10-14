@@ -34,7 +34,7 @@ namespace ShapesGraphics.Models.Shapes
 
         public override string ToString()
         {
-            return $"{base.ToString()}Radius: {Radius}{Environment.NewLine}{GetShapeCharacteristics()}";
+            return $"Circle{Environment.NewLine}{base.ToString()}Radius: {Radius}{Environment.NewLine}";
         }
     }
 }
