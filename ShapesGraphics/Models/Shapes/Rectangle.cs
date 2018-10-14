@@ -35,7 +35,7 @@ namespace ShapesGraphics.Models.Shapes
 
         public override string ToString()
         {
-            return $"{base.ToString()}Width: {Width}{Environment.NewLine}Height: {Height}{Environment.NewLine}{GetShapeCharacteristics()}";
+            return $"Rectangle{Environment.NewLine}{base.ToString()}Width: {Width}{Environment.NewLine}Height: {Height}{Environment.NewLine}";
         }
     }
 }

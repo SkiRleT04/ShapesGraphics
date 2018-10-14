@@ -38,8 +38,7 @@ namespace ShapesGraphics.Models.Shapes
 
         public override string ToString()
         {
-            return $@"Name: {Name}\n
-                      CenterOfMass: {CenterOfMass}\n";
+            return $"Name: {Name}{Environment.NewLine}CenterOfMass: ({CenterOfMass.X}; {CenterOfMass.Y}){Environment.NewLine}";
         }
 
         public string GetShapeCharacteristics()

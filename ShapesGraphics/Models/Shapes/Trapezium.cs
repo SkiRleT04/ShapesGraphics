@@ -32,12 +32,12 @@ namespace ShapesGraphics.Models.Shapes
 
         public override double GetPerimeter()
         {
-            return ShortBase + LongBase + 2 * Math.Sqrt(Math.Pow(Height, 2) + Math.Pow((ShortBase - LongBase), 2) / 4);
+            return ShortBase + LongBase + 2 * Math.Sqrt(Math.Pow(Height, 2) + Math.Pow(Math.Abs((ShortBase - LongBase)), 2) / 4);
         }
 
         public override string ToString()
         {
-            return $"{base.ToString()}ShortBase: {ShortBase}{Environment.NewLine}LongBase: {LongBase}{Environment.NewLine}Height: {Height}{Environment.NewLine}{GetShapeCharacteristics()}";
+            return $"Trapezium{Environment.NewLine}{base.ToString()}ShortBase: {ShortBase}{Environment.NewLine}LongBase: {LongBase}{Environment.NewLine}Height: {Height}{Environment.NewLine}";
         }
     }
 }

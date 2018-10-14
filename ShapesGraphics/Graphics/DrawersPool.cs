@@ -13,10 +13,10 @@ namespace ShapesGraphics.Graphics
 
         public IDrawer<IShape> GetDrawer(Type type)
         {
-            var draw = new CircleDrawer();
-            dynamic drawer = Activator.CreateInstance(type);
+            //var draw = new CircleDrawer();
+            //dynamic drawer = Activator.CreateInstance(type);
 
-            Drawers.Add(draw);
+            //Drawers.Add(draw);
             return null;
         }
     }
