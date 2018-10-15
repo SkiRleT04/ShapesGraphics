@@ -1,13 +1,8 @@
 ﻿using ShapesGraphics.Models.ConstructionArgs;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace ShapesGraphics.Models.Validators
 {
-    public interface IValidator<T>
+    public interface IValidator<T> where T : BaseConstructionArgs
     {
         void Validate(T constructionArgs);
     }

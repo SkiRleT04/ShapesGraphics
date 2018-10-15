@@ -8,7 +8,7 @@ using ShapesGraphics.Models.ConstructionArgs;
 
 namespace ShapesGraphics.Models.Validators
 {
-    class TrapeziumValidator : IValidator<TrapeziumConstructionArgs>
+    public class TrapeziumValidator : IValidator<TrapeziumConstructionArgs>
     {
         public void Validate(TrapeziumConstructionArgs constructionArgs)
         {

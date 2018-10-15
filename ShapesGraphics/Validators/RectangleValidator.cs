@@ -8,7 +8,7 @@ using ShapesGraphics.Models.ConstructionArgs;
 
 namespace ShapesGraphics.Models.Validators
 {
-    class RectangleValidator : IValidator<RectangleConstructionArgs>
+    public class RectangleValidator : IValidator<RectangleConstructionArgs>
     {
         public void Validate(RectangleConstructionArgs constructionArgs)
         {
