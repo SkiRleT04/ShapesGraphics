@@ -10,12 +10,12 @@ namespace ShapesGraphics.Graphics
         public override void Draw(Trapezium shape)
         {
             GL.ClearColor(0f, 1f, 0f, 1.0f);
+            GL.PolygonMode(MaterialFace.FrontAndBack, PolygonMode.Line);
             GL.Clear(ClearBufferMask.ColorBufferBit);
             GL.Color3(1f, 1f, 1f);
             GL.LoadIdentity();
 
             GL.Begin(PrimitiveType.Polygon);
-
 
             float shortBase = shape.ShortBase;
             float longBase = shape.LongBase;

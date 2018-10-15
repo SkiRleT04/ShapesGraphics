@@ -80,7 +80,7 @@ namespace ShapesGraphics.ViewModels
         private void OnDeleteShape()
         {
             ShapesList.Remove(SelectedShape);
-            SelectedShape = null;
+            SelectedShape = ShapesList.LastOrDefault();
         }
 
         private bool CanEditOrDeleteShape()

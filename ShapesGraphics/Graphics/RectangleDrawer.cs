@@ -9,6 +9,7 @@ namespace ShapesGraphics.Graphics
         public override void Draw(Rectangle rectangle)
         {
             GL.ClearColor(0f, 1f, 0f, 1.0f);
+            GL.PolygonMode(MaterialFace.FrontAndBack, PolygonMode.Line);
             GL.Clear(ClearBufferMask.ColorBufferBit);
             GL.Color3(1f, 1f, 1f);
             GL.LoadIdentity();

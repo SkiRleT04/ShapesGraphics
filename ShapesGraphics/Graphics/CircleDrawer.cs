@@ -10,6 +10,7 @@ namespace ShapesGraphics.Graphics
         public override void Draw(Circle circle)
         {
             GL.ClearColor(0f, 1f, 0f, 1.0f);
+            GL.PolygonMode(MaterialFace.FrontAndBack, PolygonMode.Line);
             GL.Clear(ClearBufferMask.ColorBufferBit);
             GL.Color3(1f, 1f, 1f);
             GL.LoadIdentity();
@@ -17,10 +18,10 @@ namespace ShapesGraphics.Graphics
             GL.Begin(PrimitiveType.LineLoop);
             float radius = circle.Radius;
 
-            float oX = 0f;
-            float oY = 0f;
+            float oX = circle.CenterOfMass.X;
+            float oY = circle.CenterOfMass.Y;
 
-            int triangleAmount = 100;
+            int triangleAmount = 10000;
 
             List<float> listValuesForCalculateCoefficient = new List<float>();
 

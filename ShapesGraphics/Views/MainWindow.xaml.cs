@@ -1,5 +1,6 @@
 ﻿using ShapesGraphics.ViewModels;
 using System.Windows;
+using OpenTK.Graphics.OpenGL;
 
 namespace ShapesGraphics.Views
 {
@@ -12,6 +13,7 @@ namespace ShapesGraphics.Views
             InitializeComponent();
             _viewModel = new MainWindowViewModel(canvas);
             DataContext = _viewModel;
+            GL.ClearColor(0f, 1f, 0f, 1.0f);
         }
 
         private void CanvasContainerSizeChanged(object sender, SizeChangedEventArgs e)
