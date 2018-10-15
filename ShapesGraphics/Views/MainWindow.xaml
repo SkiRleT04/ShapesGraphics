@@ -18,7 +18,7 @@
             <ColumnDefinition Width="10*"/>
         </Grid.ColumnDefinitions>
 
-        <ComboBox Grid.Row="0" Grid.Column="0" Margin="5" SelectedItem="{Binding SelectedShapeType}" ItemsSource="{Binding ShapeTypesList}"/>
+        <ComboBox Grid.Row="0" Grid.Column="0" Margin="5" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" SelectedItem="{Binding SelectedShapeType}" ItemsSource="{Binding ShapeTypesList}"/>
 
         <Grid Grid.Row="1" Grid.Column="0">
             <Grid.ColumnDefinitions>
@@ -35,6 +35,6 @@
             <WpfOpenGL:WpfOpenGLControl Name="canvas" HasSharedContext="True"/>
         </StackPanel>
 
-        <TextBlock Grid.Row="3" Grid.Column="1" Text="{Binding SelectedShapeProperties}"/>
+        <TextBlock Grid.Row="3" Grid.Column="1" Margin="5" Text="{Binding SelectedShapeProperties}"/>
     </Grid>
 </Window>

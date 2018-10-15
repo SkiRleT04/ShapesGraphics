@@ -78,6 +78,10 @@
     <Compile Include="Graphics\TrapeziumDrawer.cs" />
     <Compile Include="Models\Common\Command.cs" />
     <Compile Include="Models\Common\Point.cs" />
+    <Compile Include="Models\ConstructionArgs\BaseConstructionArgs.cs" />
+    <Compile Include="Models\ConstructionArgs\CircleConstructionArgs.cs" />
+    <Compile Include="Models\ConstructionArgs\RectangleConstructionArgs.cs" />
+    <Compile Include="Models\ConstructionArgs\TrapeziumConstructionArgs.cs" />
     <Compile Include="ViewModels\BaseViewModel.cs" />
     <Compile Include="ViewModels\BindableObject.cs" />
     <Compile Include="ViewModels\CreateCircleViewModel.cs" />
@@ -134,10 +138,6 @@
     </Page>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Models\ConstructionArgs\CircleConstructionArgs.cs" />
-    <Compile Include="Models\ConstructionArgs\BaseConstructionArgs.cs" />
-    <Compile Include="Models\ConstructionArgs\RectangleConstructionArgs.cs" />
-    <Compile Include="Models\ConstructionArgs\TrapeziumConstructionArgs.cs" />
     <Compile Include="Models\Shapes\Circle.cs" />
     <Compile Include="Models\Shapes\Rectangle.cs" />
     <Compile Include="Models\Shapes\Shape.cs" />

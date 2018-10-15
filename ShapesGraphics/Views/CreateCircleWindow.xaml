@@ -4,15 +4,14 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ShapesGraphics.Views"
-                  xmlns:s="clr-namespace:System;assembly=mscorlib"
-                  xmlns:templates="clr-namespace:ShapesGraphics.Views.Templates"
-                  mc:Ignorable="d"
-        Title="Create new circle" Height="200" Width="300" ResizeMode="NoResize" WindowStartupLocation="CenterScreen" WindowStyle="ThreeDBorderWindow">
+        xmlns:templates="clr-namespace:ShapesGraphics.Views.Templates"
+        mc:Ignorable="d"
+        Title="Create new circle" Height="220" Width="270" ResizeMode="NoResize" WindowStartupLocation="CenterScreen" WindowStyle="ThreeDBorderWindow">
     <Grid Margin="10">
         <Grid.RowDefinitions>
-            <RowDefinition Height="1*"/>
-            <RowDefinition Height="1*"/>
-            <RowDefinition Height="1*"/>
+            <RowDefinition Height="0.5*"/>
+            <RowDefinition Height="0.3*"/>
+            <RowDefinition Height="auto"/>
         </Grid.RowDefinitions>
 
         <Grid.ColumnDefinitions>
@@ -22,9 +21,9 @@
 
         <templates:CreateShapeBaseParamsTemplate Grid.Row="0" Grid.ColumnSpan="2"/>
 
-        <Label Content="Radius: " Grid.Row="1" Grid.Column="0"/>
-        <TextBox Text="{Binding CircleConstructionArgs.Radius}" Grid.Row="1" Grid.Column="1"/>
+        <Label Content="Radius: " Grid.Row="1" Grid.Column="0" Margin="5"/>
+        <TextBox Text="{Binding CircleConstructionArgs.Radius}" Grid.Row="1" Grid.Column="1" Margin="5" PreviewTextInput="TextBox_PreviewTextInput"/>
 
-        <templates:CreateShapeActionButtonsTemplate Grid.Row="3" Grid.ColumnSpan="2" HorizontalAlignment="Center"/>
+        <templates:CreateShapeActionButtonsTemplate Grid.Row="3" Grid.ColumnSpan="2" HorizontalAlignment="Center" Margin="5"/>
     </Grid>
 </local:BaseWindow>
