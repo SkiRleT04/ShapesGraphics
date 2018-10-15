@@ -1,23 +1,15 @@
-﻿using ShapesGraphics.Exceptions;
-using ShapesGraphics.Models.ConstructionArgs;
-using ShapesGraphics.Models.Validators;
+﻿using ShapesGraphics.Models.ConstructionArgs;
 using System;
 
 namespace ShapesGraphics.Models.Shapes
 {
     public class Circle : Shape
     {
-        public Circle(BaseConstructionArgs baseConstructionArgs, IValidator validator) : base(baseConstructionArgs, validator)
-        {
+        private static int _circlesCount = 0;
 
-            if (baseConstructionArgs is CircleConstructionArgs circleConstructionArgs)
-            {
-                Radius = circleConstructionArgs.Radius;
-            }
-            else
-            {
-                throw new ConstructionArgsCastException("Cannot cast Base Construction Args to Circle Construction Args.");
-            }
+        public Circle()
+        {
+           Name =  $"C{++_circlesCount}";
         }
 
         public int Radius { get; set; }

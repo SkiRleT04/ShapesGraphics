@@ -7,10 +7,10 @@
                   xmlns:s="clr-namespace:System;assembly=mscorlib"
                   xmlns:templates="clr-namespace:ShapesGraphics.Views.Templates"
                   mc:Ignorable="d"
-        Title="Create new circle" Height="300" Width="300" ResizeMode="NoResize" WindowStartupLocation="CenterScreen" WindowStyle="ThreeDBorderWindow">
+        Title="Create new circle" Height="200" Width="300" ResizeMode="NoResize" WindowStartupLocation="CenterScreen" WindowStyle="ThreeDBorderWindow">
     <Grid Margin="10">
         <Grid.RowDefinitions>
-            <RowDefinition Height="2*"/>
+            <RowDefinition Height="1*"/>
             <RowDefinition Height="1*"/>
             <RowDefinition Height="1*"/>
         </Grid.RowDefinitions>
@@ -25,6 +25,6 @@
         <Label Content="Radius: " Grid.Row="1" Grid.Column="0"/>
         <TextBox Text="{Binding CircleConstructionArgs.Radius}" Grid.Row="1" Grid.Column="1"/>
 
-        <templates:CreateShapeActionButtonsTemplate Grid.Row="3" Grid.ColumnSpan="2"/>
+        <templates:CreateShapeActionButtonsTemplate Grid.Row="3" Grid.ColumnSpan="2" HorizontalAlignment="Center"/>
     </Grid>
 </local:BaseWindow>

@@ -1,5 +1,5 @@
 ﻿using ShapesGraphics.Enums;
-using ShapesGraphics.Graphics;
+using ShapesGraphics.Extensions;
 using ShapesGraphics.Models.Common;
 using ShapesGraphics.Models.Shapes;
 using ShapesGraphics.Views;
@@ -8,6 +8,8 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
 using WpfOpenGlControl;
+using OpenTK.Graphics.OpenGL;
+
 
 namespace ShapesGraphics.ViewModels
 {
@@ -63,23 +65,6 @@ namespace ShapesGraphics.ViewModels
             }
         }
 
-        private Command _editShapeCommand;
-        public Command EditShapeCommand
-        {
-            get
-            {
-                if (_editShapeCommand == null)
-                {
-                    _editShapeCommand = new Command(OnEditShape, CanEditOrDeleteShape);
-                }
-                return _editShapeCommand;
-            }
-        }
-        private void OnEditShape()
-        {
-
-        }
-
         private Command _deleteShapeCommand;
         public Command DeleteShapeCommand
         {
@@ -115,14 +100,20 @@ namespace ShapesGraphics.ViewModels
             set
             {
                 SetProperty(ref _selectedShape, value);
-                EditShapeCommand.RaiseCanExecuteChanged();
+
                 DeleteShapeCommand.RaiseCanExecuteChanged();
+
                 if (_selectedShape != null)
                 {
                     SelectedShapeProperties = _selectedShape.GetShapeCharacteristics();
-                    DrawerHelper.Draw(_selectedShape);
-                    _canvas.Invalidate();
-                }             
+                    _selectedShape.Draw();
+                }
+                else
+                {
+                    SelectedShapeProperties = string.Empty;
+                    GL.ClearColor(0f, 1f, 0f, 1.0f);
+                }
+                _canvas.Invalidate();
             }
         }
 
@@ -134,12 +125,6 @@ namespace ShapesGraphics.ViewModels
                 if (_shapesList == null)
                 {
                     _shapesList = new ObservableCollection<Shape>();
-
-                    //var circle = new Circle(
-                    //        new CircleConstructionArgs { CenterOfMass = new Point { X = 1, Y = 2 }, Name = "123", Radius = 3 }
-                    //        , new CircleValidator());
-
-                    //_shapesList.Add(circle);
                 }
                 return _shapesList;
             }

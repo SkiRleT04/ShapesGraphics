@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
+using DryIoc;
 using ShapesGraphics.Models.Common;
 using ShapesGraphics.Models.ConstructionArgs;
 using ShapesGraphics.Models.Shapes;
@@ -17,8 +19,7 @@ namespace ShapesGraphics.ViewModels
         {
             TrapeziumConstructionArgs = new TrapeziumConstructionArgs()
             {
-                CenterOfMass = new Point(),
-                Name = string.Empty,
+                CenterOfMass = new Models.Common.Point(),
                 Height = default,
                 LongBase = default,
                 ShortBase = default
@@ -49,7 +50,25 @@ namespace ShapesGraphics.ViewModels
         {
             get
             {
-                return () => Shape = new Trapezium(TrapeziumConstructionArgs, new TrapeziumValidator());
+                try
+                {
+                    App.Container.Resolve<TrapeziumValidator>().Validate(TrapeziumConstructionArgs);
+
+                    Trapezium trapezium = new Trapezium
+                    {
+                        CenterOfMass = TrapeziumConstructionArgs.CenterOfMass,
+                        LongBase = TrapeziumConstructionArgs.LongBase,
+                        ShortBase = TrapeziumConstructionArgs.ShortBase,
+                        Height = TrapeziumConstructionArgs.Height
+                    };
+
+                    return () => Shape = trapezium;
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
+                }
+                return default;
             }
         }
     }

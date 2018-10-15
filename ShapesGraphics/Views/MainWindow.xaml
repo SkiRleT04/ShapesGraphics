@@ -6,7 +6,7 @@
         xmlns:WpfOpenGL="clr-namespace:WpfOpenGlControl;assembly=WpfOpenGlControl"
         mc:Ignorable="d"
         Title="MainWindow" WindowState="Maximized" ResizeMode="NoResize">
-    <Grid>
+    <Grid x:Name="grid">
         <Grid.RowDefinitions>
             <RowDefinition Height="1*"/>
             <RowDefinition Height="1*"/>
@@ -23,19 +23,17 @@
         <Grid Grid.Row="1" Grid.Column="0">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="1*"/>
-                <!--<ColumnDefinition Width="1*"/>-->
                 <ColumnDefinition Width="1*"/>
             </Grid.ColumnDefinitions>
             <Button Command="{Binding CreateShapeCommand}" Content="Create" Grid.Column="0" Margin="5" />
-            <!--<Button Command="{Binding EditShapeCommand}" Content="E" Grid.Column="1" Margin="5"/>-->
             <Button Command="{Binding DeleteShapeCommand}" Content="Delete" Grid.Column="2" Margin="5"/>
         </Grid>
 
         <ListView ItemsSource="{Binding ShapesList}" SelectedItem="{Binding SelectedShape}" Grid.Row="2" Grid.RowSpan="2" Grid.Column="0" Margin="5"/>
-        <DockPanel x:Name="panel" Grid.Row="2" Grid.Column="1">
-           
-            <WpfOpenGL:WpfOpenGLControl  Name="gl" HasSharedContext="True"/>
-        </DockPanel>
+
+        <StackPanel SizeChanged="CanvasContainerSizeChanged" x:Name="canvasContainer" Grid.Row="2" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+            <WpfOpenGL:WpfOpenGLControl Name="canvas" HasSharedContext="True"/>
+        </StackPanel>
 
         <TextBlock Grid.Row="3" Grid.Column="1" Text="{Binding SelectedShapeProperties}"/>
     </Grid>

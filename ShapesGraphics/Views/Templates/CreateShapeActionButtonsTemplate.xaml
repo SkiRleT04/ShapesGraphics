@@ -9,13 +9,13 @@
              mc:Ignorable="d">
     <Grid>
         <StackPanel Orientation="Horizontal" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
-            <Button Content="Save" HorizontalAlignment="Left" Command="{Binding CloseCommand}">
+            <Button Content="Save" Margin="5" Width="100" Height="30" HorizontalAlignment="Left" Command="{Binding CloseCommand}">
                 <!-- Dialog promt is not required -->
                 <Button.CommandParameter>
                     <s:Boolean>False</s:Boolean>
                 </Button.CommandParameter>
             </Button>
-            <Button Content="Cancel" HorizontalAlignment="Right" Command="{Binding CloseCommand}"/>
+            <Button Content="Cancel" Margin="5" Width="100" Height="30" HorizontalAlignment="Right" Command="{Binding CloseCommand}"/>
         </StackPanel>
     </Grid>
 </UserControl>

@@ -1,5 +1,6 @@
 ﻿using System;
-using ShapesGraphics.Models.Common;
+using System.Windows;
+using DryIoc;
 using ShapesGraphics.Models.ConstructionArgs;
 using ShapesGraphics.Models.Shapes;
 using ShapesGraphics.Models.Validators;
@@ -13,8 +14,7 @@ namespace ShapesGraphics.ViewModels
         {
             RectangleConstructionArgs = new RectangleConstructionArgs()
             {
-                CenterOfMass = new Point(),
-                Name = string.Empty,
+                CenterOfMass = new Models.Common.Point(),
                 Height = default,
                 Width = default
             };
@@ -44,7 +44,24 @@ namespace ShapesGraphics.ViewModels
         {
             get
             {
-                return () => Shape = new Rectangle(RectangleConstructionArgs, new RectangleValidator());
+                try
+                {
+                    App.Container.Resolve<RectangleValidator>().Validate(RectangleConstructionArgs);
+
+                    Rectangle rectangle = new Rectangle
+                    {
+                        CenterOfMass = RectangleConstructionArgs.CenterOfMass,
+                        Width = RectangleConstructionArgs.Width,
+                        Height = RectangleConstructionArgs.Height
+                    };
+
+                    return () => Shape = rectangle;
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
+                }
+                return default;
             }
         }
     }

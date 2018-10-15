@@ -1,14 +1,15 @@
 ﻿using DryIoc;
+using ShapesGraphics.Graphics;
 using ShapesGraphics.Models.Shapes;
 using System;
 using System.Linq;
 using System.Reflection;
 
-namespace ShapesGraphics.Graphics
+namespace ShapesGraphics.Extensions
 {
-    public static class DrawerHelper
+    public static class ShapeExtensions
     {
-        public static void Draw(Shape shape)
+        public static void Draw(this Shape shape)
         {
             if (shape == null)
             {

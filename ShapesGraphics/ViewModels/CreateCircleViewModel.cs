@@ -1,9 +1,11 @@
-﻿using ShapesGraphics.Exceptions;
+﻿using DryIoc;
+using ShapesGraphics.Exceptions;
 using ShapesGraphics.Models.Common;
 using ShapesGraphics.Models.ConstructionArgs;
 using ShapesGraphics.Models.Shapes;
 using ShapesGraphics.Models.Validators;
 using System;
+using System.Windows;
 
 namespace ShapesGraphics.ViewModels
 {
@@ -14,8 +16,7 @@ namespace ShapesGraphics.ViewModels
         {
             CircleConstructionArgs = new CircleConstructionArgs()
             {
-                CenterOfMass = new Point(),
-                Name = string.Empty,
+                CenterOfMass = new Models.Common.Point(),
                 Radius = default
             };
 
@@ -44,7 +45,23 @@ namespace ShapesGraphics.ViewModels
         {
             get
             {
-                return () => Shape = new Circle(CircleConstructionArgs, new CircleValidator());
+                try
+                {
+                    App.Container.Resolve<CircleValidator>().Validate(CircleConstructionArgs);
+
+                    Circle circle = new Circle
+                    {
+                        CenterOfMass = CircleConstructionArgs.CenterOfMass,
+                        Radius = CircleConstructionArgs.Radius
+                    };
+
+                    return () => Shape = circle;
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
+                }
+                return default;     
             }
         }
     }

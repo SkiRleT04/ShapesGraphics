@@ -71,12 +71,11 @@
     </ApplicationDefinition>
     <Compile Include="Enums\ShapeType.cs" />
     <Compile Include="Exceptions\ValidationException.cs" />
+    <Compile Include="Extensions\ShapeExtensions.cs" />
     <Compile Include="Graphics\BaseDrawer.cs" />
     <Compile Include="Graphics\CircleDrawer.cs" />
-    <Compile Include="Graphics\DrawerHelper.cs" />
     <Compile Include="Graphics\RectangleDrawer.cs" />
     <Compile Include="Graphics\TrapeziumDrawer.cs" />
-    <Compile Include="Helpers\Singleton.cs" />
     <Compile Include="Models\Common\Command.cs" />
     <Compile Include="Models\Common\Point.cs" />
     <Compile Include="ViewModels\BaseViewModel.cs" />
@@ -109,7 +108,6 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="Exceptions\ConstructionArgsCastException.cs" />
     <Compile Include="Views\MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
@@ -144,10 +142,10 @@
     <Compile Include="Models\Shapes\Rectangle.cs" />
     <Compile Include="Models\Shapes\Shape.cs" />
     <Compile Include="Models\Shapes\Trapezium.cs" />
-    <Compile Include="Models\Validators\CircleValidator.cs" />
-    <Compile Include="Models\Validators\IValidator.cs" />
-    <Compile Include="Models\Validators\RectangleValidator.cs" />
-    <Compile Include="Models\Validators\TrapeziumValidator.cs" />
+    <Compile Include="Validators\CircleValidator.cs" />
+    <Compile Include="Interfaces\IValidator.cs" />
+    <Compile Include="Validators\RectangleValidator.cs" />
+    <Compile Include="Validators\TrapeziumValidator.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>

@@ -34,16 +34,17 @@ namespace ShapesGraphics.Graphics
             float p4X = oX - halfWidth;
             float p4Y = oY - halfHeight;
 
-            List<float> listValuesForCalculateCoefficient = new List<float>();
-
-            listValuesForCalculateCoefficient.Add(p1X);
-            listValuesForCalculateCoefficient.Add(p1Y);
-            listValuesForCalculateCoefficient.Add(p2X);
-            listValuesForCalculateCoefficient.Add(p2Y);
-            listValuesForCalculateCoefficient.Add(p3X);
-            listValuesForCalculateCoefficient.Add(p3Y);
-            listValuesForCalculateCoefficient.Add(oX);
-            listValuesForCalculateCoefficient.Add(oY);
+            List<float> listValuesForCalculateCoefficient = new List<float>
+            {
+                p1X,
+                p1Y,
+                p2X,
+                p2Y,
+                p3X,
+                p3Y,
+                oX,
+                oY
+            };
 
             int coefficient = GetСoefficient(listValuesForCalculateCoefficient);
 

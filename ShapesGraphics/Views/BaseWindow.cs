@@ -8,7 +8,7 @@ namespace ShapesGraphics.Views
     public partial class BaseWindow : Window
     {
         protected BaseViewModel _viewModel;
-        private Func<object, bool> Closing;
+        private new Func<object, bool> Closing;
         private bool isDialogPromtUnrequired;
 
         protected BaseWindow(BaseViewModel viewModel)

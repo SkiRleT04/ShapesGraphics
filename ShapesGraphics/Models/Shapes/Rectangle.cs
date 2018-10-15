@@ -1,23 +1,15 @@
-﻿using ShapesGraphics.Exceptions;
-using ShapesGraphics.Models.ConstructionArgs;
-using ShapesGraphics.Models.Validators;
+﻿using ShapesGraphics.Models.ConstructionArgs;
 using System;
 
 namespace ShapesGraphics.Models.Shapes
 {
     public class Rectangle : Shape
     {
-        public Rectangle(BaseConstructionArgs constructionArgs, IValidator validator) : base(constructionArgs, validator)
+        private static int _rectanglesCount = 0;
+
+        public Rectangle()
         {
-            if (constructionArgs is RectangleConstructionArgs rectangleConstructionArgs)
-            {
-                Width = rectangleConstructionArgs.Width;
-                Height = rectangleConstructionArgs.Height;
-            }
-            else
-            {
-                throw new ConstructionArgsCastException("Cannot cast Base Construction Args to Rectangle Construction Args.");
-            }
+            Name = $"R{++_rectanglesCount}";
         }
 
         public int Width { get; set; }

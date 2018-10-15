@@ -1,24 +1,15 @@
-﻿using ShapesGraphics.Exceptions;
-using ShapesGraphics.Models.ConstructionArgs;
-using ShapesGraphics.Models.Validators;
+﻿using ShapesGraphics.Models.ConstructionArgs;
 using System;
 
 namespace ShapesGraphics.Models.Shapes
 {
     public class Trapezium : Shape
     {
-        public Trapezium(BaseConstructionArgs baseConstructionArgs, IValidator validator) : base(baseConstructionArgs, validator)
+        private static int _trapeziumsCount = 0;
+
+        public Trapezium()
         {
-            if (baseConstructionArgs is TrapeziumConstructionArgs trapeziumConstructionArgs)
-            {
-                ShortBase = trapeziumConstructionArgs.ShortBase;
-                LongBase = trapeziumConstructionArgs.LongBase;
-                Height = trapeziumConstructionArgs.Height;
-            }
-            else
-            {
-                throw new ConstructionArgsCastException("Cannot cast Base Construction Args to Trapezium Construction Args.");
-            }
+            Name = $"T{++_trapeziumsCount}";
         }
 
         public int ShortBase { get; set; }

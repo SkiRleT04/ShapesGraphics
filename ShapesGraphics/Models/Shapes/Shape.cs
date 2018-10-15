@@ -1,20 +1,10 @@
-﻿using ShapesGraphics.Exceptions;
-using ShapesGraphics.Models.Common;
-using ShapesGraphics.Models.ConstructionArgs;
-using ShapesGraphics.Models.Validators;
+﻿using ShapesGraphics.Models.Common;
 using System;
 
 namespace ShapesGraphics.Models.Shapes
 {
     public abstract class Shape
     {
-        protected Shape(BaseConstructionArgs baseConstructionArgs, IValidator validator)
-        {
-            CenterOfMass = baseConstructionArgs.CenterOfMass;
-            Name = baseConstructionArgs.Name;
-            validator.Validate(baseConstructionArgs);
-        }
-
         private Point _centerOfMass;
         public Point CenterOfMass
         {
