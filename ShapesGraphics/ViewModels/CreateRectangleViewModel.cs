@@ -44,24 +44,16 @@ namespace ShapesGraphics.ViewModels
         {
             get
             {
-                try
-                {
-                    App.Container.Resolve<RectangleValidator>().Validate(RectangleConstructionArgs);
+                App.Container.Resolve<RectangleValidator>().Validate(RectangleConstructionArgs);
 
-                    Rectangle rectangle = new Rectangle
-                    {
-                        CenterOfMass = RectangleConstructionArgs.CenterOfMass,
-                        Width = RectangleConstructionArgs.Width,
-                        Height = RectangleConstructionArgs.Height
-                    };
-
-                    return () => Shape = rectangle;
-                }
-                catch (Exception ex)
+                Rectangle rectangle = new Rectangle
                 {
-                    MessageBox.Show(ex.Message);
-                }
-                return default;
+                    CenterOfMass = RectangleConstructionArgs.CenterOfMass,
+                    Width = RectangleConstructionArgs.Width.GetValueOrDefault(0),
+                    Height = RectangleConstructionArgs.Height.GetValueOrDefault(0)
+                };
+
+                return () => Shape = rectangle;
             }
         }
     }

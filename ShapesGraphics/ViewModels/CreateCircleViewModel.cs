@@ -40,28 +40,20 @@ namespace ShapesGraphics.ViewModels
 
         public override Shape Shape { get; set; }
         #endregion
-      
+
         public override Action Save
         {
             get
             {
-                try
-                {
-                    App.Container.Resolve<CircleValidator>().Validate(CircleConstructionArgs);
+                App.Container.Resolve<CircleValidator>().Validate(CircleConstructionArgs);
 
-                    Circle circle = new Circle
-                    {
-                        CenterOfMass = CircleConstructionArgs.CenterOfMass,
-                        Radius = CircleConstructionArgs.Radius
-                    };
-
-                    return () => Shape = circle;
-                }
-                catch (Exception ex)
+                Circle circle = new Circle
                 {
-                    MessageBox.Show(ex.Message);
-                }
-                return default;     
+                    CenterOfMass = CircleConstructionArgs.CenterOfMass,
+                    Radius = CircleConstructionArgs.Radius.GetValueOrDefault(0)
+                };
+
+                return () => Shape = circle;
             }
         }
     }

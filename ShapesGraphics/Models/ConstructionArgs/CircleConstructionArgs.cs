@@ -2,6 +2,6 @@
 {
     public class CircleConstructionArgs: BaseConstructionArgs
     {
-        public int Radius { get; set; }
+        public int? Radius { get; set; }
     }
 }

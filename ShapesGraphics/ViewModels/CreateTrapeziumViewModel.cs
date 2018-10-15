@@ -50,25 +50,17 @@ namespace ShapesGraphics.ViewModels
         {
             get
             {
-                try
-                {
-                    App.Container.Resolve<TrapeziumValidator>().Validate(TrapeziumConstructionArgs);
+                App.Container.Resolve<TrapeziumValidator>().Validate(TrapeziumConstructionArgs);
 
-                    Trapezium trapezium = new Trapezium
-                    {
-                        CenterOfMass = TrapeziumConstructionArgs.CenterOfMass,
-                        LongBase = TrapeziumConstructionArgs.LongBase,
-                        ShortBase = TrapeziumConstructionArgs.ShortBase,
-                        Height = TrapeziumConstructionArgs.Height
-                    };
-
-                    return () => Shape = trapezium;
-                }
-                catch (Exception ex)
+                Trapezium trapezium = new Trapezium
                 {
-                    MessageBox.Show(ex.Message);
-                }
-                return default;
+                    CenterOfMass = TrapeziumConstructionArgs.CenterOfMass,
+                    LongBase = TrapeziumConstructionArgs.LongBase.GetValueOrDefault(0),
+                    ShortBase = TrapeziumConstructionArgs.ShortBase.GetValueOrDefault(0),
+                    Height = TrapeziumConstructionArgs.Height.GetValueOrDefault(0)
+                };
+
+                return () => Shape = trapezium;
             }
         }
     }

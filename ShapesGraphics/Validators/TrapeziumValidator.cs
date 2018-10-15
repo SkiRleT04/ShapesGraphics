@@ -12,15 +12,15 @@ namespace ShapesGraphics.Models.Validators
     {
         public void Validate(TrapeziumConstructionArgs constructionArgs)
         {
-            if (constructionArgs.Height <= 0)
+            if (constructionArgs.Height <= 0 || !constructionArgs.Height.HasValue)
             {
                 throw new ValidationException("Height of trapezium should be greater than zero.");
             }
-            if (constructionArgs.LongBase <= 0)
+            if (constructionArgs.LongBase <= 0 || !constructionArgs.LongBase.HasValue)
             {
                 throw new ValidationException("LongBase of trapezium should be greater than zero.");
             }
-            if (constructionArgs.ShortBase <= 0)
+            if (constructionArgs.ShortBase <= 0 || !constructionArgs.ShortBase.HasValue)
             {
                 throw new ValidationException("ShortBase of trapezium should be greater than zero.");
             }

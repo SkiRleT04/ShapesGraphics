@@ -12,11 +12,11 @@ namespace ShapesGraphics.Models.Validators
     {
         public void Validate(RectangleConstructionArgs constructionArgs)
         {
-            if (constructionArgs.Width <= 0)
+            if (constructionArgs.Width <= 0 || !constructionArgs.Width.HasValue)
             {
                 throw new ValidationException("Width of rectangle should be greater than zero.");
             }
-            if (constructionArgs.Height <= 0)
+            if (constructionArgs.Height <= 0 || !constructionArgs.Height.HasValue)
             {
                 throw new ValidationException("Height of rectangle should be greater than zero.");
             }

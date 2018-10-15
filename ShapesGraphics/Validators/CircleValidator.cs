@@ -12,7 +12,7 @@ namespace ShapesGraphics.Models.Validators
     {
         public void Validate(CircleConstructionArgs constructionArgs)
         {
-            if (constructionArgs.Radius <= 0)
+            if (constructionArgs.Radius <= 0 || !constructionArgs.Radius.HasValue)
             {
                 throw new ValidationException("Radius of circle should be greater than zero.");
             }
