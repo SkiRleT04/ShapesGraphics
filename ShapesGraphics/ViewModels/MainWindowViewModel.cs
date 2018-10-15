@@ -111,8 +111,11 @@ namespace ShapesGraphics.ViewModels
                 else
                 {
                     SelectedShapeProperties = string.Empty;
-                    GL.ClearColor(0f, 1f, 0f, 1.0f);
+                    GL.Clear(ClearBufferMask.ColorBufferBit);
                 }
+
+                _canvas.Invalidate();
+                _canvas.Invalidate();
                 _canvas.Invalidate();
             }
         }
