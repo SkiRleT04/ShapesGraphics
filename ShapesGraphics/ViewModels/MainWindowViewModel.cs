@@ -61,7 +61,8 @@ namespace ShapesGraphics.ViewModels
 
             if(shape != null)
             {
-                ShapesList.Add(shape);
+                ShapesFullList.Add(shape);
+                ApplyFilter();
             }
         }
 
@@ -79,7 +80,8 @@ namespace ShapesGraphics.ViewModels
         }
         private void OnDeleteShape()
         {
-            ShapesList.Remove(SelectedShape);
+            ShapesFullList.Remove(SelectedShape);
+            ApplyFilter();
             SelectedShape = ShapesList.LastOrDefault();
         }
 
@@ -115,8 +117,6 @@ namespace ShapesGraphics.ViewModels
                 }
 
                 _canvas.Invalidate();
-                _canvas.Invalidate();
-                _canvas.Invalidate();
             }
         }
 
@@ -134,6 +134,23 @@ namespace ShapesGraphics.ViewModels
             set
             {
                 SetProperty(ref _shapesList, value);
+            }
+        }
+
+        private List<Shape> _shapesFullList;
+        public List<Shape> ShapesFullList
+        {
+            get
+            {
+                if (_shapesFullList == null)
+                {
+                    _shapesFullList = new List<Shape>();
+                }
+                return _shapesFullList;
+            }
+            set
+            {
+                SetProperty(ref _shapesFullList, value);
             }
         }
 
@@ -170,10 +187,70 @@ namespace ShapesGraphics.ViewModels
                 SetProperty(ref _selectedShapeProperties, value);
             }
         }
+
+        private bool _isCircleSelected;
+        public bool IsCircleSelected
+        {
+            get
+            {
+                return _isCircleSelected;
+            }
+            set
+            {
+                SetProperty(ref _isCircleSelected, value);
+                ApplyFilter();
+            }
+        }
+
+        private bool _isRectangleSelected;
+        public bool IsRectangleSelected
+        {
+            get
+            {
+                return _isRectangleSelected;
+            }
+            set
+            {
+                SetProperty(ref _isRectangleSelected, value);
+                ApplyFilter();
+            }
+        }
+
+
+        private bool _isTrapeziumSelected;
+        public bool IsTrapeziumSelected
+        {
+            get
+            {
+                return _isTrapeziumSelected;
+            }
+            set
+            {
+                SetProperty(ref _isTrapeziumSelected, value);
+                ApplyFilter();
+            }
+        }
         #endregion Properties
 
         #region Variables
         private WpfOpenGLControl _canvas;
+        #endregion
+
+        #region Methods
+        private void ApplyFilter()
+        {
+            if(!IsCircleSelected && !IsTrapeziumSelected && !IsRectangleSelected)
+            {
+                ShapesList = new ObservableCollection<Shape>(ShapesFullList);
+                return;
+            }
+
+            var filteredList = ShapesFullList.Where(x=>
+            (IsCircleSelected && x is Circle) ||
+            (IsTrapeziumSelected && x is Trapezium) ||
+            (IsRectangleSelected && x is Rectangle));
+            ShapesList = new ObservableCollection<Shape>(filteredList);
+        }
         #endregion
     }
 }

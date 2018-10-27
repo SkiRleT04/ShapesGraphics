@@ -9,7 +9,7 @@
     <Grid x:Name="grid">
         <Grid.RowDefinitions>
             <RowDefinition Height="1*"/>
-            <RowDefinition Height="1*"/>
+            <RowDefinition Height="4*"/>
             <RowDefinition Height="10*"/>
             <RowDefinition Height="3*"/>
         </Grid.RowDefinitions>
@@ -25,8 +25,23 @@
                 <ColumnDefinition Width="1*"/>
                 <ColumnDefinition Width="1*"/>
             </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="1*"/>
+                <RowDefinition Height="2*"/>
+            </Grid.RowDefinitions>
             <Button Command="{Binding CreateShapeCommand}" Content="Create" Grid.Column="0" Margin="5" />
             <Button Command="{Binding DeleteShapeCommand}" Content="Delete" Grid.Column="2" Margin="5"/>
+            <Grid Grid.Row="1" Grid.ColumnSpan="2" Margin="5">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="1*"/>
+                    <RowDefinition Height="1*"/>
+                    <RowDefinition Height="1*"/>
+                </Grid.RowDefinitions>
+                <CheckBox Content="Circle" Grid.Row="0" IsChecked="{Binding IsCircleSelected, Mode=TwoWay}"/>
+                <CheckBox Content="Rectangle" Grid.Row="1" IsChecked="{Binding IsRectangleSelected, Mode=TwoWay}"/>
+                <CheckBox Content="Trapezium" Grid.Row="2" IsChecked="{Binding IsTrapeziumSelected, Mode=TwoWay}"/>
+            </Grid>
+
         </Grid>
 
         <ListView ItemsSource="{Binding ShapesList}" SelectedItem="{Binding SelectedShape,Mode=TwoWay}" Grid.Row="2" Grid.RowSpan="2" Grid.Column="0" Margin="5"/>
