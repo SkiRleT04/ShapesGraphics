@@ -46,7 +46,7 @@
 
         <ListView ItemsSource="{Binding ShapesList}" SelectedItem="{Binding SelectedShape,Mode=TwoWay}" Grid.Row="2" Grid.RowSpan="2" Grid.Column="0" Margin="5"/>
 
-        <StackPanel SizeChanged="CanvasContainerSizeChanged" x:Name="canvasContainer" Grid.Row="2" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+        <StackPanel SizeChanged="CanvasContainerSizeChanged" x:Name="canvasContainer" Grid.Row="0" Grid.RowSpan="3" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="5">
             <WpfOpenGL:WpfOpenGLControl Name="canvas" HasSharedContext="True"/>
         </StackPanel>
 
