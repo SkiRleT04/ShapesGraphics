@@ -5,11 +5,10 @@ using ShapesGraphics.Models.Shapes;
 using ShapesGraphics.Views;
 using System;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
 using System.Linq;
 using WpfOpenGlControl;
 using OpenTK.Graphics.OpenGL;
-
+using ShapesGraphics.List;
 
 namespace ShapesGraphics.ViewModels
 {
@@ -62,8 +61,11 @@ namespace ShapesGraphics.ViewModels
             if(shape != null)
             {
                 ShapesFullList.Add(shape);
+                ShapesFullList = new CustomList<Shape>(ShapesFullList);
                 ApplyFilter();
             }
+
+
         }
 
         private Command _deleteShapeCommand;
@@ -81,6 +83,7 @@ namespace ShapesGraphics.ViewModels
         private void OnDeleteShape()
         {
             ShapesFullList.Remove(SelectedShape);
+            ShapesFullList = new CustomList<Shape>(ShapesFullList);
             ApplyFilter();
             SelectedShape = ShapesList.LastOrDefault();
         }
@@ -120,14 +123,14 @@ namespace ShapesGraphics.ViewModels
             }
         }
 
-        private ObservableCollection<Shape> _shapesList;
-        public ObservableCollection<Shape> ShapesList
+        private CustomList<Shape> _shapesList;
+        public CustomList<Shape> ShapesList
         {
             get
             {
                 if (_shapesList == null)
                 {
-                    _shapesList = new ObservableCollection<Shape>();
+                    _shapesList = new CustomList<Shape>();
                 }
                 return _shapesList;
             }
@@ -137,14 +140,14 @@ namespace ShapesGraphics.ViewModels
             }
         }
 
-        private List<Shape> _shapesFullList;
-        public List<Shape> ShapesFullList
+        private CustomList<Shape> _shapesFullList;
+        public CustomList<Shape> ShapesFullList
         {
             get
             {
                 if (_shapesFullList == null)
                 {
-                    _shapesFullList = new List<Shape>();
+                    _shapesFullList = new CustomList<Shape>();
                 }
                 return _shapesFullList;
             }
@@ -241,15 +244,16 @@ namespace ShapesGraphics.ViewModels
         {
             if(!IsCircleSelected && !IsTrapeziumSelected && !IsRectangleSelected)
             {
-                ShapesList = new ObservableCollection<Shape>(ShapesFullList);
+                ShapesList = new CustomList<Shape>(ShapesFullList);
                 return;
             }
 
             var filteredList = ShapesFullList.Where(x=>
             (IsCircleSelected && x is Circle) ||
             (IsTrapeziumSelected && x is Trapezium) ||
-            (IsRectangleSelected && x is Rectangle));
-            ShapesList = new ObservableCollection<Shape>(filteredList);
+            (IsRectangleSelected && x is Rectangle)).ToList();
+
+            ShapesList = new CustomList<Shape>(filteredList);
         }
         #endregion
     }
