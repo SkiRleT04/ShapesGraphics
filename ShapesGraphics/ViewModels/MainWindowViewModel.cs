@@ -9,13 +9,18 @@ using System.Linq;
 using WpfOpenGlControl;
 using OpenTK.Graphics.OpenGL;
 using ShapesGraphics.List;
+using DryIoc;
+using ShapesGraphics.Helpers;
 
 namespace ShapesGraphics.ViewModels
 {
     public class MainWindowViewModel : BindableObject
     {
+        private readonly GenerateShapeHelper _generateShapeHelper;
+
         public MainWindowViewModel(WpfOpenGLControl canvas)
         {
+            _generateShapeHelper = App.Container.Resolve<GenerateShapeHelper>();
             _canvas = canvas;
         }
 
@@ -68,6 +73,46 @@ namespace ShapesGraphics.ViewModels
 
         }
 
+        private Command _generateShapeCommand;
+        public Command GenerateShapeCommand
+        {
+            get
+            {
+                if (_generateShapeCommand == null)
+                {
+                    _generateShapeCommand = new Command(OnGenerateShapeCommand);
+                }
+                return _generateShapeCommand;
+            }
+        }
+        private void OnGenerateShapeCommand()
+        {
+            Shape shape = null;
+
+            if (SelectedShapeType == ShapeType.Circle)
+            {
+                shape = _generateShapeHelper.GenerateCircle();
+            }
+
+            if (SelectedShapeType == ShapeType.Rectangle)
+            {
+                shape = _generateShapeHelper.GenerateRectangle();
+            }
+
+            if (SelectedShapeType == ShapeType.Trapezium)
+            {
+                shape = _generateShapeHelper.GenerateTrapezium();
+            }
+
+            if (shape != null)
+            {
+                ShapesFullList.Add(shape);
+                ShapesFullList = new CustomList<Shape>(ShapesFullList);
+                ApplyFilter();
+            }
+        }
+
+        
         private Command _deleteShapeCommand;
         public Command DeleteShapeCommand
         {

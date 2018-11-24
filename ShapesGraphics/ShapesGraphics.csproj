@@ -76,6 +76,7 @@
     <Compile Include="Graphics\CircleDrawer.cs" />
     <Compile Include="Graphics\RectangleDrawer.cs" />
     <Compile Include="Graphics\TrapeziumDrawer.cs" />
+    <Compile Include="Helpers\GenerateShapeHelper.cs" />
     <Compile Include="List\CustomList.cs" />
     <Compile Include="List\Node.cs" />
     <Compile Include="Models\Common\Command.cs" />
