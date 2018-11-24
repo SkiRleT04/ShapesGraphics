@@ -1,5 +1,6 @@
 ﻿using DryIoc;
 using ShapesGraphics.Graphics;
+using ShapesGraphics.Helpers;
 using ShapesGraphics.Models.Validators;
 using System.Windows;
 
@@ -20,6 +21,8 @@ namespace ShapesGraphics
             Container.Register<CircleValidator>(Reuse.Singleton);
             Container.Register<TrapeziumValidator>(Reuse.Singleton);
             Container.Register<RectangleValidator>(Reuse.Singleton);
+
+            Container.Register<GenerateShapeHelper>(Reuse.Singleton);
 
             base.OnStartup(e);
         }
