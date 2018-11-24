@@ -28,8 +28,30 @@ namespace ShapesGraphics.Views.Templates
 
         private void TextBox_PreviewTextInput(object sender, TextCompositionEventArgs e)
         {
-            Regex regex = new Regex("[^0-9]+");
-            e.Handled = regex.IsMatch(e.Text);
+            if (sender is TextBox textBox)
+            {
+                Regex regex = new Regex(@"(^-$)|(^-?\d+$)");
+                bool isValid = regex.IsMatch(textBox.Text) || string.IsNullOrEmpty(textBox.Text);
+
+                if (textBox.Text.Length > 0)
+                {
+                    if (!regex.IsMatch(e.Text))
+                    {
+                        isValid = false;
+                    }
+
+                    if (e.Text == "-")
+                    {
+                        isValid = false;
+                    }
+                }
+
+                e.Handled = !isValid;
+            }
+            else
+            {
+                e.Handled = false;
+            }
         }
     }
 }
